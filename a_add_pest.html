@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - Add Pest</title>
+    <link rel="stylesheet" href="a_fertilizer&pest.css"> <!-- Link to the fertilizers-specific CSS -->
+    <script>
+        function confirmSubmission() {
+            var confirmation = confirm("Are you sure you want to submit this form?");
+            if (confirmation) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function confirmLogout() {
+            var confirmAction = confirm("Are you sure you want to log out?");
+            if (confirmAction) {
+                window.location.href = "logout.php";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo" class="logo-img">
+            <h5>Department of Agriculture Office<br>
+                Lagonoy Calamansi Farmer Agri-Coop<br>
+                Municipality of Lagonoy, Camarines Sur</h5>
+        </div>
+    </header>
+    <main>
+        <div class="form-container">
+            <a href="javascript:history.back()" class="back-button">✖</a>
+            <h2>Input Pest Data</h2>
+            <form action="a_save_pest.php" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
+                <label for="pest_name">Pest Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="causes">Causes:</label>
+                <textarea id="causes" name="causes" rows="5" required></textarea>
+            
+                <label for="solutions">Solutions:</label>
+                <textarea id="solutions" name="solutions" rows="5" required></textarea>
+            
+                <label for="image">Pest Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            
+                <input type="submit" value="Save Pest">
+            </form>            
+        </div>
+    </main>
+</body>
+</html>

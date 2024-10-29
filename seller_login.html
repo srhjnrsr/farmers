@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller's Login</title>
+    <link rel="stylesheet" href="seller_login.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo" class="logo-img">
+            <h5>Department of Agriculture Office<br>
+                Lagonoy Calamansi Farmer Agri-Coop<br>
+                Municipality of Lagonoy, Camarines Sur</h5>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <a href="javascript:history.back()" class="back-button">✖</a> <!-- X button to go back -->
+            <h2>Farmers Log In</h2>
+            
+            <form action="submit_login.php" method="post">
+                <input type="hidden" name="role" value="Farmer">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="input-field" required>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+            
+            <div class="signup-link">
+                <p>Don't have an account? <a href="seller_signup.html">Register</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

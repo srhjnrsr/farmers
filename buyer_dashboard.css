@@ -1,0 +1,199 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Century Schoolbook';
+}
+
+body {
+    background-color: white;
+}
+
+/* Header styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    padding: 5px 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    user-select: none;
+}
+
+.logo-img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: orange;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation a.active {
+    color: orange;
+    font-weight: 700;
+}
+
+.logout-icon img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.logout-icon img:hover {
+    opacity: 0.7;
+}
+
+/* Adjust the styling for the main section */
+main {
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 120px auto; /* Adjust the margins for better centering */
+    width: 90%;
+    max-width: 1000px;
+    border: 2px solid green;
+}
+
+h1 {
+    color: black;
+    text-align: left;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    margin: 30px 0;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+table th {
+    background-color: #c0d3f5;
+    color: black;
+}
+
+table td img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Buttons & Forms */
+button {
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    width: 130px;
+    display: flex;                  /* Use flexbox for the button */
+    align-items: center;           /* Center items vertically */
+    justify-content: center;       /* Center items horizontally */
+}
+
+.button-img {
+    width: 24px;                  /* Set a width for the button image */
+    height: auto;                 /* Keep the aspect ratio */
+}
+
+/* Button specific styles */
+.add-to-cart {
+    background-color: #4CAF50; /* Green */
+}
+
+.add-to-cart:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+.buy_now {
+    background-color: #2196F3; /* Blue */
+}
+
+.buy_now:hover {
+    background-color: #0b7dda; /* Darker blue */
+}
+.buy-now {
+    background-color: #2196F3; /* Blue */
+}
+
+.buy-now:hover {
+    background-color: #0b7dda; /* Darker blue */
+}
+
+.message {
+    background-color: #f44336; /* Red */
+}
+
+.message:hover {
+    background-color: #da190b; /* Darker red */
+}
+
+input[type='number'] {
+    width: 60px; /* Set a smaller width */
+    padding: 5px; /* Adjust padding for a more compact look */
+    font-size: 14px; /* You can adjust the font size if needed */
+    border-radius: 3px; /* Optional: add border radius for styling */
+    border: 1px solid #ccc; /* Optional: border styling */
+    text-align: center; /* Center the text inside the input */
+}
+
+.remove-from-cart {
+    background-color: #ee5821; /* Red */
+    color: white; /* Text color */
+}
+
+.remove-from-cart:hover {
+    background-color: #da500b; /* Darker red on hover */
+}

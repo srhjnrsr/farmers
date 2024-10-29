@@ -1,0 +1,177 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures consistent box-sizing across all elements */
+    font-family: 'Poppins', 'Century Schoolbook'; /* Applies Poppins font globally */
+}
+
+/* Body Styles */
+body {
+    display: flex; /* Flexbox for centering content */
+    justify-content: center; /* Horizontally centers content */
+    align-items: center; /* Vertically centers content */
+    min-height: 100vh; /* Ensures body takes up full viewport height */
+    margin: 0; /* Removes default margin */
+    background-color: white; /* Sets background color to white */
+}
+
+/* Header Styles */
+header {
+    position: fixed; /* Keeps header fixed at the top during scrolling */
+    top: 0; /* Positions the header at the top of the page */
+    left: 0; /* Aligns header to the left */
+    width: 100%; /* Spans header across full width of the page */
+    padding: 5px 10px; /* Adds padding to the header */
+    background: green; /* Sets green background color for header */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Spaces out logo and navigation links */
+    align-items: center; /* Vertically centers content in header */
+    z-index: 99; /* Ensures header appears above other content */
+}
+
+.logo {
+    display: flex; /* Aligns logo image and text horizontally */
+    align-items: center; /* Vertically centers logo text with the image */
+    color: white; /* Sets logo text color to white */
+    user-select: none; /* Prevents text from being selectable */
+}
+
+.logo-img {
+    width: 60px; /* Sets width of the logo image */
+    height: auto; /* Maintains aspect ratio of logo image */
+    margin-right: 10px; /* Adds space between logo image and text */
+}
+
+.navigation {
+    display: flex; /* Flexbox layout for navigation links */
+    align-items: center; /* Vertically centers navigation links */
+}
+
+.navigation a {
+    position: relative; /* Allows positioning of pseudo-elements */
+    font-size: 1.1em; /* Slightly increases font size */
+    color: white; /* Sets link text color to white */
+    text-decoration: none; /* Removes default underline from links */
+    font-weight: 500; /* Sets a solid weight for link text */
+    margin-left: 40px; /* Adds space between navigation links */
+}
+
+.navigation a::after {
+    content: ''; /* Creates a pseudo-element for the hover underline */
+    position: absolute; /* Absolute positioning for the underline */
+    left: 0; /* Aligns the underline to the left of the link */
+    bottom: -6px; /* Positions the underline just below the link text */
+    width: 100%; /* Sets the underline width to match the link */
+    height: 3px; /* Sets the height of the underline */
+    background: orange; /* Sets the color of the underline */
+    border-radius: 5px; /* Rounds the edges of the underline */
+    transform-origin: right; /* Shrinks the underline from the right side */
+    transform: scaleX(0); /* Hides the underline initially */
+    transition: transform .5s; /* Smooth transition for the hover effect */
+}
+
+.navigation a:hover::after {
+    transform-origin: left; /* Expands the underline from the left side on hover */
+    transform: scaleX(1); /* Makes the underline visible */
+}
+
+.navigation a.active {
+    color: orange; /* Changes the color of the active link to orange */
+    font-weight: 700; /* Increases font weight for active link */
+}
+
+.navigation a.active::after {
+    transform-origin: left; /* Keeps the underline visible for the active link */
+    transform: scaleX(1); /* Ensures underline is fully expanded */
+    background: orange; /* Matches underline color to active link color */
+}
+
+/* Form Container Styles */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: whitesmoke; /* Background color for form container */
+    padding: 40px; /* Adds padding inside the main section */
+    border-radius: 10px; /* Rounds the corners of the main section */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+    margin-top: 90px; /* Space for fixed header */
+    margin-bottom: 20px;
+    border: 2px solid green;
+    max-width: 800px; /* Increases max-width to make form wider */
+    position: relative;
+}
+
+/* Fertilizer Form Styles */
+h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 10px; /* Reduces space below the heading to move it closer to the form */
+}
+
+label {
+    color: black;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px; /* Increase padding for a more comfortable input area */
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #2d6a4f;
+    color: white;
+    padding: 14px 20px; /* Slightly larger padding for a wider button */
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #1b4d3e;
+}
+
+/* Logout Icon Styles */
+.logout-icon img {
+    width: 32px; /* Sets the size of the logout icon */
+    height: 32px; /* Ensures the icon maintains its aspect ratio */
+    vertical-align: middle; /* Aligns the icon vertically with text */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+
+.logout-icon img:hover {
+    opacity: 0.7; /* Adds a hover effect by reducing opacity */
+}
+
+
+.back-button {
+    position: absolute; /* Absolute positioning for the back button */
+    top: 10px;
+    right: 10px;
+    font-size: 20px; /* Font size for the back button */
+    color: red; /* Red color for the back button */
+    text-decoration: none; /* Remove underline from the link */
+    background: none; /* No background for the button */
+    border: none; /* No border for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.back-button:hover {
+    color: darkred; /* Dark red color on hover */
+}

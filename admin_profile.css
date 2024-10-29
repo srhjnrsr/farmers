@@ -1,0 +1,221 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Century Schoolbook';
+}
+
+body {
+    background-color: white;
+}
+
+/* Header styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    padding: 5px 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    user-select: none;
+}
+
+.logo-img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: orange;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation a.active {
+    color: orange;
+    font-weight: 700;
+}
+
+/* Dropdown button styling */
+.dropbtn {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+/* Dropdown container styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    color: black;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1em;
+    border-bottom: 1px solid lightgray;
+}
+
+/* Dropdown hover effect */
+.dropdown-content a:hover {
+    background-color: dimgrey;
+    color: white;
+}
+
+/* Show dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown button hover effect */
+.dropdown:hover .dropbtn {
+    background-color: orange;
+    color: black;
+}
+
+.dropbtn img.icon-img {
+    width: 64px; /* Adjust the size */
+    height: 64px;
+    vertical-align: middle;
+    margin-right: 8px; /* Space between the image and text */
+}
+
+.logout-icon img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.logout-icon img:hover {
+    opacity: 0.7;
+}
+
+/* Main section styling */
+main {
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 120px auto;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid green;
+}
+
+h1 {
+    color: black;
+    text-align: left;
+}
+
+h2 {
+    margin-top: 20px;
+    color: black;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.form-group input[type="password"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="password"]:focus {
+    border-color: green;
+    outline: none;
+}
+
+button[type="submit"] {
+    padding: 12px;
+    background-color: green;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: orange;
+}

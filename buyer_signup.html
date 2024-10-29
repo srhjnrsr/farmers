@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buyer's Sign Up</title>
+    <link rel="stylesheet" href="buyer_signup.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo" class="logo-img">
+            <h5>Department of Agriculture Office<br>
+                Lagonoy Calamansi Farmer Agri-Coop<br>
+                Municipality of Lagonoy, Camarines Sur</h5>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <a href="javascript:history.back()" class="back-button">✖</a> <!-- X button to go back -->
+            <h2>Buyers Registration</h2>
+            
+            <form action="buyer_signup.php" method="post">
+                <div class="form-group">
+                    <label for="enrollment">Enrollment Type:</label>
+                    <div class="radio-group">
+                        <div class="radio-container">
+                            <input type="radio" name="enrollment" id="buyer" value="buyer" required>
+                            <label for="buyer">Buyer</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>PART I. PERSONAL INFORMATION</h3>
+
+                <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="middlename">Middle Name:</label>
+                    <input type="text" id="middlename" name="middlename" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="extension">Extension Name:</label>
+                    <input type="text" id="extension" name="extension" class="input-field">
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">Sex:</label>
+                    <select id="sex" name="sex" class="input-field" required>
+                        <option value=""></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <div class="address-fields">
+                        <input type="text" id="street" name="street" class="input-field" placeholder="Street/Sitio/Subdiv." required>
+                        <input type="text" id="barangay" name="barangay" class="input-field" placeholder="Barangay" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for=""></label>
+                    <div class="address-fields">
+                        <input type="text" id="municipality" name="municipality" class="input-field" placeholder="Municipality" required>
+                        <input type="text" id="province" name="province" class="input-field" placeholder="Province" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile_number">Mobile Number:</label>
+                    <input type="tel" id="mobile_number" name="mobile_number" class="input-field" required pattern="[0-9]{11}" placeholder="ex. 09123456789">
+                </div>
+                
+                <h3>PART II. CREATE ACCOUNT</h3>
+
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="input-field" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="input-field" required minlength="8">
+                </div>
+            
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="input-field" required>
+                </div>
+            
+                <div class="form-group centered-buttons">
+                    <input type="hidden" name="role" value="Buyer">
+                    <button type="reset" class="cancel-button">Cancel</button>
+                    <button type="submit">Submit</button>
+                </div>
+            
+                <div class="form-group centered-text">
+                    <p>Already have an account? <a href="buyer_login.html" class="login-link">Log in</a></p>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

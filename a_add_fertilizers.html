@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - Fertilizer Input</title>
+    <link rel="stylesheet" href="a_fertilizer&pest.css"> <!-- Link to the fertilizers-specific CSS -->
+    <script>
+        function confirmSubmission() {
+            var confirmation = confirm("Are you sure you want to submit this form?");
+            if (confirmation) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function confirmLogout() {
+            var confirmAction = confirm("Are you sure you want to log out?");
+            if (confirmAction) {
+                window.location.href = "logout.php";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo" class="logo-img">
+            <h5>Department of Agriculture Office<br>
+                Lagonoy Calamansi Farmer Agri-Coop<br>
+                Municipality of Lagonoy, Camarines Sur</h5>
+        </div>
+    </header>
+    <main>
+        <div class="form-container">
+            <a href="javascript:history.back()" class="back-button">✖</a>
+            <h2>Input Fertilizer Data</h2>
+            <form action="a_save_fertilizer.php" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
+                <label for="fertilizer_name">Fertilizer Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            
+                <label for="applications">Applications:</label>
+                <textarea id="applications" name="applications" rows="5" required></textarea>
+            
+                <label for="method">Method of Application:</label>
+                <textarea id="method" name="method" rows="5" required></textarea>
+            
+                <label for="best_for">Best For:</label>
+                <textarea id="best_for" name="best_for" rows="5" required></textarea>
+            
+                <label for="image">Fertilizer Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            
+                <input type="submit" value="Save Fertilizer">
+            </form>            
+        </div>
+    </main>
+</body>
+</html>

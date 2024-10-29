@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seller's Sign Up</title>
+    <link rel="stylesheet" href="seller_signup.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo" class="logo-img">
+            <h5>Department of Agriculture Office<br>
+                Lagonoy Calamansi Farmer Agri-Coop<br>
+                Municipality of Lagonoy, Camarines Sur</h5>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <a href="javascript:history.back()" class="back-button">✖</a> <!-- X button to go back -->
+            <h2>Farmers Registration</h2>
+            
+            <form action="seller_signup.php" method="post">
+                <div class="form-group">
+                    <label for="enrollment">Enrollment Type:</label>
+                    <div class="radio-group">
+                        <div class="radio-container">
+                            <input type="radio" name="enrollment" id="farmer" value="Farmer" required>
+                            <label for="farmer">Farmer</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="shop_name">Shop Name:</label>
+                    <input type="text" id="shop_name" name="shop_name" class="input-field" required>
+                </div>
+
+                <h3>PART I. PERSONAL INFORMATION</h3>
+
+                <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="middlename">Middle Name:</label>
+                    <input type="text" id="middlename" name="middlename" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="extension">Extension Name:</label>
+                    <input type="text" id="extension" name="extension" class="input-field">
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">Sex:</label>
+                    <select id="sex" name="sex" class="input-field" required>
+                        <option value=""></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="civil_status">Civil Status:</label>
+                    <select id="civil_status" name="civil_status" class="input-field" required>
+                        <option value=""></option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="widow">Widow/Widower</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" class="input-field" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <div class="address-fields">
+                        <input type="text" id="street" name="street" class="input-field" placeholder="Street/Sitio/Subdiv." required>
+                        <input type="text" id="barangay" name="barangay" class="input-field" placeholder="Barangay" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for=""></label>
+                    <div class="address-fields">
+                        <input type="text" id="municipality" name="municipality" class="input-field" placeholder="Municipality" required>
+                        <input type="text" id="province" name="province" class="input-field" placeholder="Province" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="household_members">No. of Household Members:</label>
+                    <input type="number" id="household_members" name="household_members" class="input-field" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="educational_attainment">Educational Attainment:</label>
+                    <select id="educational_attainment" name="educational_attainment" class="input-field" required>
+                        <option value=""></option>
+                        <option value="elementary_level">Elementary Level</option>
+                        <option value="elementary_graduate">Elementary Graduate</option>
+                        <option value="high_school_level">High School Level</option>
+                        <option value="high_school_graduate">High School Graduate</option>
+                        <option value="senior_high_level">Senior High School Level</option>
+                        <option value="senior_high_graduate">Senior High School Graduate</option>
+                        <option value="college_level">College Level</option>
+                        <option value="college_graduate">College Graduate</option>
+                        <option value="not_applicable">Not Applicable</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile_number">Mobile Number:</label>
+                    <input type="tel" id="mobile_number" name="mobile_number" class="input-field" required pattern="[0-9]{11}" placeholder="ex. 09123456789">
+                </div>
+
+                <h3>PART II. FARM INFORMATION</h3>
+
+                <div class="form-group">
+                    <label for="farm_address">Farm Address:</label>
+                    <div class="address-fields">
+                        <input type="text" id="farm_street" name="farm_street" class="input-field" placeholder="Street/Sitio/Subdiv." required>
+                        <input type="text" id="farm_barangay" name="farm_barangay" class="input-field" placeholder="Barangay" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="physical_area">Physical Area (HA):</label>
+                    <input type="number" id="physical_area" name="physical_area" class="input-field" min="0" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="total_production">Total Production (HA):</label>
+                    <input type="number" id="total_production" name="total_production" class="input-field" min="0" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tenurial_status">Tenurial Status:</label>
+                    <select id="tenurial_status" name="tenurial_status" class="input-field" required>
+                        <option value=""></option>
+                        <option value="owner">Owner</option>
+                        <option value="tenant">Tenant</option>
+                        <option value="renter">Renter</option>
+                        <option value="not_applicable">Not Applicable</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="soil_type">Soil Type:</label>
+                    <select id="soil_type" name="soil_type" class="input-field" required>
+                        <option value=""></option>
+                        <option value="clay">Clay</option>
+                        <option value="Sandy">Sandy</option>
+                        <option value="sandy_clay">Sandy Clay</option>
+                        <option value="sandy_loam">Sandy Loam</option>
+                        <option value="not_applicable">Not Applicable</option>
+                    </select>
+                </div>
+
+                <h3>PART III. CREATE ACCOUNT</h3>
+
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="input-field" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="input-field" required minlength="8">
+                </div>
+            
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="input-field" required>
+                </div>
+            
+                <div class="form-group centered-buttons">
+                    <input type="hidden" name="role" value="Farmer">
+                    <button type="reset" class="cancel-button">Cancel</button>
+                    <button type="submit">Submit</button>
+                </div>
+            
+                <div class="form-group centered-text">
+                    <p>Already have an account? <a href="seller_login.html" class="login-link">Log in</a></p>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    <script>
+        function goToLoginPage(role) {
+            if (role === 'Buyer') {
+                window.location.href = 'buyer_login.html';
+            } else if (role === 'Admin') {
+                window.location.href = 'admin_login.html';
+            } else {
+                window.location.href = 'seller_login.html?role=' + role;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo" class="logo-img">
+            <h5>Department of Agriculture Office<br>
+                Lagonoy Calamansi Farmer Agri-Coop<br>
+                Municipality of Lagonoy, Camarines Sur</h5>
+        </div>
+        <nav class="navigation">
+            <a href="home.html" class="active">Home</a>
+            <a href="fertilizer.php">Fertilizer</a>
+            <a href="pest.php">Pest</a>
+            <!-- Dropdown for Farmer and Buyer -->
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <img src="shopping.png" alt="Icon">Farmers & Buyers Hub</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="goToLoginPage('Seller')">Farmer</a>
+                    <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
+                </div>
+            </div>
+            <a href="#" onclick="goToLoginPage('Admin')">Municipal Agriculturist</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Calamansi Farmers’ Portal: A Dedicated Platform for Calamansi Farmers in Lagonoy, Camarines Sur.</h1>
+    </main>
+</body>
+</html>

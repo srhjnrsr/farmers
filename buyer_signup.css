@@ -1,0 +1,184 @@
+/* Resetting default styles */
+* {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    font-family: 'Poppins', 'Century Schoolbook'; /* Apply Poppins font globally */
+}
+
+body {
+    background-color: white; /* Set background color for the body */
+}
+
+header {
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the viewport */
+    padding: 5px 10px;
+    background: green; /* Background color for the header */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between logo and other content */
+    align-items: center; /* Center items vertically */
+    z-index: 99; /* Ensure header is above other content */
+}
+
+.logo {
+    display: flex; /* Flexbox for logo layout */
+    align-items: center; /* Center items vertically */
+    color: white; /* Text color for the logo */
+    user-select: none; /* Prevent text selection */
+}
+
+.logo-img {
+    width: 60px; /* Width of the logo image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logo image and text */
+}
+
+main {
+    padding-top: 100px; /* Space for fixed header */
+}
+
+h2 {
+    text-align: center; /* Center-align heading text */
+    margin-bottom: 20px; /* Space below the heading */
+    color: black; /* Text color for the heading */
+}
+
+h3 {
+    margin-top: 20px; /* Space above the heading */
+    color: black; /* Text color for the heading */
+    font-size: 1.2em; /* Font size for the heading */
+    text-decoration: underline; /* Underline the heading text */
+}
+
+.form-container {
+    max-width: 800px; /* Maximum width of the form container */
+    margin: 0 auto 25px; /* Center container and margin below */
+    padding: 20px;
+    background: whitesmoke; /* Semi-transparent background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    position: relative; /* Positioning context for child elements */
+    border: 2px solid green;
+}
+
+.back-button {
+    position: absolute; /* Absolute positioning for the back button */
+    top: 10px;
+    right: 10px;
+    font-size: 20px; /* Font size for the back button */
+    color: red; /* Red color for the back button */
+    text-decoration: none; /* Remove underline */
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.back-button:hover {
+    color: darkred; /* Darker red color on hover */
+}
+
+.form-group {
+    display: flex; /* Flexbox for form group layout */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 15px; /* Margin below each form group */
+}
+
+.form-group label {
+    flex: 0 0 40%; /* Fixed width for labels */
+    text-align: left; /* Align label text to the left */
+    font-weight: bold; /* Bold font for labels */
+    color: #333; /* Dark gray color for labels */
+}
+
+.input-field {
+    flex: 1; /* Flexible width for input fields */
+    padding: 8px;
+    border: 1px solid #ccc; /* Light gray border for input fields */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.radio-group {
+    display: flex; /* Flexbox for radio button group layout */
+    align-items: center; /* Center items vertically */
+}
+
+.radio-container {
+    display: flex; /* Flexbox for individual radio button container */
+    align-items: center; /* Center items vertically */
+    margin-right: 20px; /* Space between radio buttons */
+}
+
+.radio-container input[type="radio"] {
+    margin-right: 5px; /* Space between radio button and label */
+}
+
+button[type="submit"] {
+    background-color: green; /* Green background for submit button */
+    color: black; /* White text color for submit button */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-left: 15px; /* Space to the left */
+    border: 2px solid darkgreen;
+}
+
+button[type="submit"]:hover {
+    background-color: darkgreen; /* Darker green on hover */
+}
+
+button[type="reset"] {
+    margin-left: 15px; /* Margin to the left of the reset button */
+}
+
+.cancel-button {
+    background-color: whitesmoke; /* Red background for cancel button */
+    color: black; /* White text color for cancel button */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: 2px solid darkred;
+}
+
+.cancel-button:hover {
+    background-color: darkred; /* Darker red on hover */
+}
+
+.centered-buttons {
+    display: flex; /* Flexbox for button alignment */
+    justify-content: center; /* Center buttons horizontally */
+}
+
+.centered-text {
+    display: flex; /* Flexbox for text alignment */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    width: 100%; /* Full width */
+    margin-top: 15px; /* Space above the text */
+}
+
+.login-link {
+    color: blue; /* Blue color for login link */
+    text-decoration: none; /* Remove underline */
+    font-weight: 500; /* Medium font weight */
+}
+
+.login-link:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: darkblue; /* Darker blue color on hover */
+}
+
+/* Address section adjustments */
+.address-fields {
+    display: flex; /* Flexbox for address fields layout */
+    gap: 10px; /* Gap between fields */
+    width: 100%; /* Full width for alignment */
+}
+
+.address-fields .input-field {
+    flex: 1; /* Flexible width for each address field */
+}

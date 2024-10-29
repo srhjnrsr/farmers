@@ -1,0 +1,119 @@
+/* General Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Century Schoolbook';
+}
+
+body {
+    background-color: white;
+}
+
+/* Header styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    padding: 5px 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    user-select: none;
+}
+
+/* Logo Image Styling */
+.logo-img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+    border: none; /* Remove any default border */
+    padding: 0;   /* Ensure no padding is applied */
+    display: block; /* Ensure it's treated as a block element */
+}
+
+
+main {
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 120px auto; /* Adjust the margins for better centering */
+    width: 90%;
+    max-width: 1000px;
+    border: 2px solid green;
+}
+
+h1, h2 {
+    color: #2c7a7b;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: black;
+    background-color: #38a169;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2f855a;
+}
+
+button[type="submit"] + form button {
+    background-color: #e53e3e; /* Red for Cancel button */
+    margin-left: 10px;
+}
+
+button[type="submit"] + form button:hover {
+    background-color: #c53030;
+}
+
+form {
+    display: inline-block;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.cancel {
+    background-color: white; 
+    border: 2px solid red;
+}
+
+.cancel:hover {
+    background-color: darkred; /* Darker blue */
+}

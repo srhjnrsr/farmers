@@ -1,0 +1,167 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Century Schoolbook';
+}
+
+/* Body styling */
+/* Body styling with background image */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('background.jpg'); /* Path to your background image */
+    background-size:cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+/* Header styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 10px;
+    background: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+/* Logo styling */
+.logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    user-select: none;
+}
+
+/* Logo image styling */
+.logo-img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Navigation link styling */
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/* Dropdown button styling */
+.dropbtn {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+/* Dropdown container styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    color: black;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1.1em;
+    border-bottom: 1px solid lightgray;
+}
+
+/* Dropdown hover effect */
+.dropdown-content a:hover {
+    background-color: dimgrey;
+    color: white;
+}
+
+/* Show dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown button hover effect */
+.dropdown:hover .dropbtn {
+    background-color: orange;
+    color: black;
+}
+
+.dropbtn img.icon-img {
+    width: 64px; /* Adjust the size */
+    height: 64px;
+    vertical-align: middle;
+    margin-right: 8px; /* Space between the image and text */
+}
+
+/* Navigation underline effect */
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: orange;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+/* Hover effect for navigation links */
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/* Active link styling */
+.navigation a.active {
+    color: orange;
+    font-weight: 700;
+}
+
+.navigation a.active::after {
+    transform-origin: left;
+    transform: scaleX(1);
+    background: orange;
+}
+
+/* Main section styling */
+main {
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 100px auto;
+    width: auto;
+    max-width: 800px;
+    border: 2px solid green;
+    text-align: center;
+}
