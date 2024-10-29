@@ -12,8 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $current_user_id = $_SESSION['user_id']; // Ensure you have the user_id from the session
 $role = $_SESSION['role'];
-// Fetch seller details from the personal_info table
-
+//we'll get the user's personal info
 $sql_personal = "SELECT * FROM personal_info WHERE user_id = ?";
 
 $stmt_personal = $connection->prepare($sql_personal);
@@ -29,6 +28,10 @@ if ($result_personal->num_rows > 0) {
     exit();
 }
 
+//we will get the current url
+// the $url array is from the config/constant.php
+// we have defined it on the top of all the files so that we dont need to define it repeatedly
+$headerUrl = $url[4];
 
 ?>
 
@@ -40,19 +43,23 @@ if ($result_personal->num_rows > 0) {
     <link rel="stylesheet" href="<?= ROOT_URL ?>css\style5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        function confirmLogout() {
-            var confirmAction = confirm("Are you sure you want to log out?");
-            if (confirmAction) {
-                window.location.href = "logout.php";
-            }
-        }
-    </script>
+    <?php if ($headerUrl === 'seller_dashboard.php') : ?>
+        <link rel="stylesheet" href="seller_dashboard.css">
+    <?php endif; ?>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Century Schoolbook';
+        }
+
+
         body {
             background-color: white;
+            /* Background color for the body */
         }
+
 
         /* Header styling */
         header {
@@ -206,13 +213,28 @@ if ($result_personal->num_rows > 0) {
             opacity: 0.7;
         }
 
-        .h {
+        main {
+            background-color: whitesmoke;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 135px 50px;
+            width: auto;
+            max-width: 1500px;
+            border: 2px solid green;
+            text-align: center;
             overflow: auto;
-            position: relative;
-            top: 100px;
         }
     </style>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function confirmLogout() {
+            var confirmAction = confirm("Are you sure you want to log out?");
+            if (confirmAction) {
+                window.location.href = "logout.php";
+            }
+        }
+    </script>
 </head>
 
 <body class="h">
@@ -220,26 +242,29 @@ if ($result_personal->num_rows > 0) {
         <div class="logo">
             <img src="Logo.png" alt="Logo" class="logo-img">
             <div>
+
                 <h4>Department of Agriculture Office Lagonoy<br>Calamansi Farmer Agri-Coop<br></h4>
                 <h5>Municipality of Lagonoy, Camarines Sur</h5>
             </div>
-
         </div>
         <nav class="navigation">
-            <a href="admin_dashboard.php">Home</a>
-            <div class="dropdown">
-                <button class="dropbtn">
-                    Users</button>
-                <div class="dropdown-content">
-                    <?php if ($role == 'Admin'): ?>
+            <?php if ($role == 'Farmer') : ?>
+                <a href="seller_dashboard.php" class="active">Home</a>
+            <?php else: ?>
+                <a href="admin_dashboard.php">Home</a>
+            <?php endif; ?>
+            <!-- you can make this reference when doing the dynamic links for headers -->
+            <?php if ($role == 'Admin'): ?>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Users
+                    </button>
+                    <div class="dropdown-content">
                         <a href="#" onclick="goToLoginPage('Farmer')">Farmer</a>
                         <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
-                    <?php endif; ?>
-                    <?php if ($role == 'Farmer'): ?>
-                        <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
-                    <?php endif; ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
             <a href="a_fertilizers.php">Fertilizer</a>
             <a href="a_pest.php">Pest</a>
             <a href="message.php">
