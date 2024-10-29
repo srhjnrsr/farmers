@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     <?php if (count($months) > 0) : ?>
         <div id="month">
             <div class="chart">
-                <h2>Monhtly Reports</h2>
+                <h2>Monthly Reports</h2>
                 <canvas id="myChart"></canvas>
             </div>
         </div>
