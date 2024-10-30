@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +16,7 @@
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -32,7 +34,7 @@
                     <a href="#" onclick="goToLoginPage('Farmer')" class="active">Farmer</a>
                     <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
                 </div>
-    </div>
+            </div>
             <a href="a_fertilizers.php">Fertilizer</a>
             <a href="a_pest.php">Pest</a>
             <a href="admin_profile.php">
@@ -151,4 +153,5 @@
         }
     </script>
 </body>
+
 </html>
