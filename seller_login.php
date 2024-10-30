@@ -1,5 +1,6 @@
 <?php
 //i did refractor the header to single file and just reuse it in the other login page
+// do this for the other login pages
 require 'layout/login-header.php';
 
 ?>
