@@ -19,6 +19,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,7 +43,7 @@ $result = $conn->query($sql);
         }
     </script>
 
-<script>
+    <script>
         function goToLoginPage(role) {
             if (role === 'Farmer') {
                 window.location.href = 'a_farmers.php';
@@ -52,6 +53,7 @@ $result = $conn->query($sql);
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -61,7 +63,7 @@ $result = $conn->query($sql);
                 Municipality of Lagonoy, Camarines Sur</h5>
         </div>
         <nav class="navigation">
-            <a href="admin_dashboard.html">Home</a>
+            <a href="admin_dashboard.php">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">
                     <img src="users.png" alt="Icon">Users</button>
@@ -69,7 +71,7 @@ $result = $conn->query($sql);
                     <a href="#" onclick="goToLoginPage('Farmer')">Farmer</a>
                     <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
                 </div>
-    </div>
+            </div>
             <a href="a_fertilizers.php">Fertilizer</a>
             <a href="a_pest.php" class="active">Pest</a>
             <a href="admin_profile.php">
@@ -78,8 +80,8 @@ $result = $conn->query($sql);
             <a href="#" onclick="confirmLogout()" class="logout-icon">
                 <img src="logout.png" alt="Log Out" title="Log Out">
             </a>
-    </nav>
-       
+        </nav>
+
     </header>
 
     <main>
@@ -105,13 +107,13 @@ $result = $conn->query($sql);
                 echo '<tbody>';
 
                 while ($row = $result->fetch_assoc()) {
-                    ?>
+            ?>
                     <tr>
                         <td><img src="<?php echo $row['image']; ?>" alt="Pest Image" width="100"></td>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['causes']; ?></td>
                         <td><?php echo $row['solutions']; ?></td>
-                        
+
                         <td>
                             <form action="a_update_pest.php" method="POST" style="display: inline;">
                                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -131,7 +133,7 @@ $result = $conn->query($sql);
                             <?php } ?>
                         </td>
                     </tr>
-                    <?php
+            <?php
                 }
 
                 echo '</tbody>';
@@ -143,4 +145,5 @@ $result = $conn->query($sql);
         </div>
     </main>
 </body>
+
 </html>

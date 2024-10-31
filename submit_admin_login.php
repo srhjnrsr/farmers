@@ -15,7 +15,8 @@ if ($conn->connect_error) {
 }
 
 // Sanitize input data to prevent SQL injection
-function sanitize_input($data) {
+function sanitize_input($data)
+{
     global $conn;
     return mysqli_real_escape_string($conn, trim($data));
 }
@@ -29,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     // Predefined default password for first-time admin creation
-    $default_password = 'admin246'; 
+    $default_password = 'admin246';
 
     if ($result->num_rows === 0) {
         // Admin account doesn't exist, only create it if the correct password is entered
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<p>Admin account created successfully. Redirecting to dashboard...</p>";
                 echo "<script>
                         setTimeout(function() {
-                            window.location.href = 'admin_dashboard.html';
+                            window.location.href = 'admin_dashboard.php';
                         }, 3000); // Redirect after 3 seconds
                       </script>";
                 exit();
@@ -52,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Error creating admin account: " . $conn->error;
                 exit(); // Stop execution if admin account creation fails
             }
-
         } else {
             // The password entered doesn't match the default password for admin account creation
             echo "Invalid password for admin account creation.";
@@ -67,12 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $stored_hash)) {
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $username;
-
+            $_SESSION['role'] = 'admin';
             // Redirect to the admin dashboard
             echo "<p>Login successful. Redirecting to dashboard...</p>";
             echo "<script>
                     setTimeout(function() {
-                        window.location.href = 'admin_dashboard.html';
+                        window.location.href = 'admin_dashboard.php';
                     }, 1000); // Redirect after 1 second
                   </script>";
             exit();
@@ -83,4 +83,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-?>

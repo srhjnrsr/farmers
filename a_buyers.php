@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +23,7 @@
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -31,7 +33,7 @@
                 Municipality of Lagonoy, Camarines Sur</h5>
         </div>
         <nav class="navigation">
-            <a href="admin_dashboard.html">Home</a>
+            <a href="admin_dashboard.php">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">
                     <img src="users.png" alt="Icon">Users</button>
@@ -126,4 +128,5 @@
         ?>
     </main>
 </body>
+
 </html>

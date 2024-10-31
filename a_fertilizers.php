@@ -18,11 +18,12 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard - Fertilizers Input</title>
-    <link rel="stylesheet" href="a_pest_fertilizer.css"> 
+    <link rel="stylesheet" href="a_pest_fertilizer.css">
     <script>
         function confirmSubmission() {
             return confirm("Are you sure you want to submit this form?");
@@ -35,7 +36,7 @@ $result = $conn->query($sql);
         }
     </script>
 
-<script>
+    <script>
         function goToLoginPage(role) {
             if (role === 'Farmer') {
                 window.location.href = 'a_farmers.php';
@@ -45,6 +46,7 @@ $result = $conn->query($sql);
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -54,7 +56,7 @@ $result = $conn->query($sql);
                 Municipality of Lagonoy, Camarines Sur</h5>
         </div>
         <nav class="navigation">
-            <a href="admin_dashboard.html">Home</a>
+            <a href="admin_dashboard.php">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">
                     <img src="users.png" alt="Icon">Users</button>
@@ -74,7 +76,7 @@ $result = $conn->query($sql);
         </nav>
 
         <!-- Add New Record Button -->
-        
+
     </header>
 
     <main>
@@ -100,7 +102,7 @@ $result = $conn->query($sql);
                 echo '<tbody>';
 
                 while ($row = $result->fetch_assoc()) {
-                    ?>
+            ?>
                     <tr>
                         <td><img src="<?php echo $row['image']; ?>" alt="Fertilizer Image" width="100"></td>
                         <td><?php echo $row['name']; ?></td>
@@ -127,7 +129,7 @@ $result = $conn->query($sql);
                             <?php } ?>
                         </td>
                     </tr>
-                    <?php
+            <?php
                 }
 
                 echo '</tbody>';
@@ -139,6 +141,7 @@ $result = $conn->query($sql);
         </div>
     </main>
 </body>
+
 </html>
 
 <?php

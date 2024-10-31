@@ -14,15 +14,30 @@ $current_user_id = $_SESSION['user_id']; // Ensure you have the user_id from the
 $role = $_SESSION['role'];
 //we'll get the user's personal info
 $sql_personal = "SELECT * FROM personal_info WHERE user_id = ?";
+$userInfo = "SELECT * FROM users WHERE user_id = ?";
+
+$stmt_user = $connection->prepare($userInfo);
+if (!$stmt_user) {
+    die("Prepare failed: " . $connection->error);
+}
+$stmt_user->bind_param("i", $current_user_id);
+if (!$stmt_user->execute()) {
+    die("Execute failed: " . $stmt_user->error);
+}
+$result_user = $stmt_user->get_result();
 
 $stmt_personal = $connection->prepare($sql_personal);
+if (!$stmt_personal) {
+    die("Prepare failed: " . $connection->error);
+}
 $stmt_personal->bind_param("i", $current_user_id);
-$stmt_personal->execute();
+if (!$stmt_personal->execute()) {
+    die("Execute failed: " . $stmt_personal->error);
+}
 $result_personal = $stmt_personal->get_result();
 
-
-if ($result_personal->num_rows > 0) {
-    $farmer = $result_personal->fetch_assoc();
+if ($result_personal || $result_user) {
+    $farmer = $result_personal->fetch_assoc() ?? $result_user->fetch_assoc();
 } else {
     echo "No profile found!";
     exit();
@@ -234,6 +249,21 @@ $headerUrl = $url[4];
                 window.location.href = "logout.php";
             }
         }
+
+        function goToLoginPage(role) {
+            if (role === 'Farmer') {
+                window.location.href = 'a_farmers.php';
+            } else if (role === 'Buyer') {
+                window.location.href = 'a_buyers.php';
+            }
+        }
+
+        function confirmLogout() {
+            var confirmAction = confirm("Are you sure you want to log out?");
+            if (confirmAction) {
+                window.location.href = "logout.php";
+            }
+        }
     </script>
 </head>
 
@@ -254,7 +284,7 @@ $headerUrl = $url[4];
                 <a href="admin_dashboard.php">Home</a>
             <?php endif; ?>
             <!-- you can make this reference when doing the dynamic links for headers -->
-            <?php if ($role == 'Admin'): ?>
+            <?php if ($role == 'admin'): ?>
                 <div class="dropdown">
                     <button class="dropbtn">
                         Users

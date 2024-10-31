@@ -26,7 +26,7 @@
                 Municipality of Lagonoy, Camarines Sur</h5>
         </div>
         <nav class="navigation">
-            <a href="admin_dashboard.html">Home</a>
+            <a href="admin_dashboard.php">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">
                     <img src="users.png" alt="Icon">Users</button>

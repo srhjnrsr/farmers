@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_password'])) {
 
             if ($update_stmt->execute()) {
                 echo "<script>alert('Password updated successfully!');</script>";
-                echo "<script>window.location.href = 'admin_dashboard.html';</script>"; // Redirect to dashboard
+                echo "<script>window.location.href = 'admin_dashboard.php';</script>"; // Redirect to dashboard
                 exit();
             } else {
                 echo "Error updating password.";
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_password'])) {
             <h5>Department of Agriculture Office<br>Lagonoy Calamansi Farmer Agri-Coop<br>Municipality of Lagonoy, Camarines Sur</h5>
         </div>
         <nav class="navigation">
-            <a href="admin_dashboard.html">Home</a>
+            <a href="admin_dashboard.php">Home</a>
             <div class="dropdown">
                 <button class="dropbtn">
                     <img src="users.png" alt="Icon">Users</button>
