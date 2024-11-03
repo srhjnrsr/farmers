@@ -19,6 +19,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,11 +32,12 @@ $result = $conn->query($sql);
             } else if (role === 'Admin') {
                 window.location.href = 'admin_login.html';
             } else {
-                window.location.href = 'seller_login.html?role=' + role;
+                window.location.href = 'seller_login.php?role=' + role;
             }
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -45,20 +47,20 @@ $result = $conn->query($sql);
                 Municipality of Lagonoy, Camarines Sur</h5>
         </div>
         <nav class="navigation">
-                <a href="home.html" >Home</a>
-                <a href="fertilizer.php">Fertilizer</a>
-                <a href="pest.php" class="active">Pest</a>
-                <!-- Dropdown for Farmer and Buyer -->
-                <div class="dropdown">
-                    <button class="dropbtn">
-                        <img src="shopping.png" alt="Icon">Farmers & Buyers Hub</button>
-                    <div class="dropdown-content">
-                        <a href="#" onclick="goToLoginPage('Seller')">Farmer</a>
-                        <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
-                    </div>
+            <a href="home.html">Home</a>
+            <a href="fertilizer.php">Fertilizer</a>
+            <a href="pest.php" class="active">Pest</a>
+            <!-- Dropdown for Farmer and Buyer -->
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <img src="shopping.png" alt="Icon">Farmers & Buyers Hub</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="goToLoginPage('Seller')">Farmer</a>
+                    <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
                 </div>
-                <a href="#" onclick="goToLoginPage('Admin')">Municipal Agriculturist</a>
-            </nav>
+            </div>
+            <a href="#" onclick="goToLoginPage('Admin')">Municipal Agriculturist</a>
+        </nav>
     </header>
 
     <main>
@@ -68,7 +70,7 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // Output data for each row
                 while ($row = $result->fetch_assoc()) {
-                    ?>
+            ?>
                     <div class="pest-item">
                         <div class="pest-content">
                             <img src="<?php echo $row['image']; ?>" alt="Pest Image">
@@ -78,7 +80,7 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <hr>
-                    <?php
+            <?php
                 }
             } else {
                 echo "<p>No pest found.</p>";
@@ -87,4 +89,5 @@ $result = $conn->query($sql);
         </div>
     </main>
 </body>
+
 </html>
