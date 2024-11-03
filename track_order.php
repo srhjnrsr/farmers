@@ -31,32 +31,34 @@ $order_result = $stmt->get_result();
 if ($order_result->num_rows > 0): ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Orders</title>
         <link rel="stylesheet" href="track_order.css">
     </head>
+
     <body>
         <header>
             <div class="logo">
                 <img src="Logo.png" alt="Logo" class="logo-img">
                 <h5>Department of Agriculture Office<br>Lagonoy Calamansi Farmer Agri-Coop<br>Municipality of Lagonoy, Camarines Sur</h5>
             </div>
-            
-        <nav class="navigation">
-            <a href="buyer_dashboard.php" >Home</a>
-            <a href="track_order.php"class="active">My Order</a>
-            <a href="a_products.php">
-                <img src="message.png" alt="Message" title="Message">
-            </a>
-            <a href="buyer_profile.php">
-                <img src="profile-account.png" alt="Profile" title="Profile">
-            </a>
-            <a href="#" onclick="confirmLogout()" class="logout-icon">
-                <img src="logout.png" alt="Log Out" title="Log Out">
-            </a>
-        </nav>
+
+            <nav class="navigation">
+                <a href="buyer_dashboard.php">Home</a>
+                <a href="track_order.php" class="active">My Order</a>
+                <a href="a_products.php">
+                    <img src="message.png" alt="Message" title="Message">
+                </a>
+                <a href="buyer_profile.php">
+                    <img src="profile-account.png" alt="Profile" title="Profile">
+                </a>
+                <a href="#" onclick="confirmLogout()" class="logout-icon">
+                    <img src="logout.png" alt="Log Out" title="Log Out">
+                </a>
+            </nav>
         </header>
         <main>
             <h1>My Orders</h1>
@@ -88,6 +90,7 @@ if ($order_result->num_rows > 0): ?>
             <a href="buyer_dashboard.php">Return to Dashboard</a>
         </main>
     </body>
+
     </html>
 <?php else: ?>
     <p>No orders found for your account.</p>
