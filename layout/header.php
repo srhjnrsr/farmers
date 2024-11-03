@@ -48,6 +48,8 @@ if ($result_personal || $result_user) {
 // we have defined it on the top of all the files so that we dont need to define it repeatedly
 $headerUrl = $url[4];
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -264,6 +266,27 @@ $headerUrl = $url[4];
                 window.location.href = "logout.php";
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let $headerUrl = '<?= $headerUrl ?>';
+            console.log($headerUrl);
+            if ($headerUrl === 'seller_dashboard.php') {
+                document.getElementById('home').className = 'active';
+            } else if ($headerUrl === 'a_farmers.php') {
+                document.getElementById('farmers').classList.add('active');
+            } else if ($headerUrl === 'a_buyers.php') {
+                document.getElementById('buyers').classList.add('active');
+            } else if ($headerUrl === 'a_fertilizers.php') {
+                document.getElementById('fertilizers').classList.add('active');
+            } else if ($headerUrl === 'a_pest.php') {
+                document.getElementById('pest').classList.add('active');
+            } else if ($headerUrl === 'track_order.php') {
+                document.getElementById('orders').classList.add('active');
+            } else if ($headerUrl === 'users.php') {
+                let messages = document.getElementById('message');
+                messages.classList.add('active');
+            }
+        });
     </script>
 </head>
 
@@ -279,9 +302,11 @@ $headerUrl = $url[4];
         </div>
         <nav class="navigation">
             <?php if ($role == 'Farmer') : ?>
-                <a href="seller_dashboard.php" class="active">Home</a>
+                <a id="home" href="seller_dashboard.php">Home</a>
+            <?php elseif ($role === 'Admin'): ?>
+                <a id="home" href="admin_dashboard.php">Home</a>
             <?php else: ?>
-                <a href="admin_dashboard.php">Home</a>
+                <a id="home" href="buyer_dashboard.php">Home</a>
             <?php endif; ?>
             <!-- you can make this reference when doing the dynamic links for headers -->
             <?php if ($role == 'admin'): ?>
@@ -290,14 +315,20 @@ $headerUrl = $url[4];
                         Users
                     </button>
                     <div class="dropdown-content">
-                        <a href="#" onclick="goToLoginPage('Farmer')">Farmer</a>
-                        <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
+                        <a id="farmers" href="#" onclick="goToLoginPage('Farmer')">Farmer</a>
+                        <a id="buyers" href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
                     </div>
                 </div>
             <?php endif; ?>
-            <a href="a_fertilizers.php">Fertilizer</a>
-            <a href="a_pest.php">Pest</a>
-            <a href="message.php">
+            <?php if ($role == 'Farmer') : ?>
+                <a id="fertilizers" href="a_fertilizers.php">Fertilizer</a>
+                <a id="pest" href="a_pest.php">Pest</a>
+            <?php endif; ?>
+            <?php if ($role == 'Buyer') : ?>
+                <a id="orders" href="track_order.php">My Orders</a>
+            <?php endif; ?>
+
+            <a id="message" name="message" href="message.php">
                 Messages
             </a>
             <a href="admin_profile.php">
