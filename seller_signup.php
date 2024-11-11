@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 // Database connection
@@ -15,7 +15,8 @@ if ($conn->connect_error) {
 }
 
 // Sanitize input data to prevent SQL injection
-function sanitize_input($data) {
+function sanitize_input($data)
+{
     global $conn;
     return mysqli_real_escape_string($conn, trim($data));
 }
@@ -67,11 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_user = "INSERT INTO users (username, password, role) VALUES ('$username', '$hashed_password', '$role')";
         if ($conn->query($sql_user) === TRUE) {
             $user_id = $conn->insert_id; // Get the last inserted user ID
-            
+
             // Store user ID in session to keep them logged in
             $_SESSION['user_id'] = $user_id;
             $_SESSION['username'] = $username; // Optional: to store more info in session
-
+            $_SESSION['role'] = $role;
             // Insert personal information
             $sql_personal_info = "INSERT INTO personal_info (user_id, surname, firstname, middlename, extension, sex, civil_status, dob, street, barangay, municipality, province, mobile_number, household_members, educational_attainment)
                                   VALUES ('$user_id', '$surname', '$firstname', '$middlename', '$extension', '$sex', '$civil_status', '$dob', '$street', '$barangay', '$municipality', '$province', '$mobile_number', '$household_members', '$educational_attainment')";
@@ -111,4 +112,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close the connection
     $conn->close();
 }
-?>

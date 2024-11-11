@@ -1,22 +1,10 @@
 <?php
-session_start();
-
-// Check if the user is logged in and if they are a buyer
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Buyer') {
-    header("Location: buyer_login.html");
-    exit();
-}
-
-// Connect to the database
-$conn = new mysqli('localhost', 'root', '', 'lagonoy_farmers');
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require 'layout/header.php';
 
 // Load cart items from the database for the logged-in user
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT product_id, quantity FROM cart_items WHERE user_id = ?";
-$stmt = $conn->prepare($sql);
+$stmt = $connection->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -29,8 +17,10 @@ $stmt->close();
 
 // Fetch product data
 $sql = "SELECT products.*, farm_info.shop_name FROM products JOIN farm_info ON products.user_id = farm_info.user_id";
-$result = $conn->query($sql);
+$result = $connection->query($sql);
 ?>
+<!-- 
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,14 +30,7 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buyer Product List</title>
     <link rel="stylesheet" href="buyer_dashboard.css">
-    <script>
-        function confirmLogout() {
-            var confirmAction = confirm("Are you sure you want to log out?");
-            if (confirmAction) {
-                window.location.href = "logout.php";
-            }
-        }
-    </script>
+
 </head>
 
 <body>
@@ -69,30 +52,30 @@ $result = $conn->query($sql);
                 <img src="logout.png" alt="Log Out" title="Log Out">
             </a>
         </nav>
-    </header>
+    </header> -->
 
-    <main>
-        <h1>Welcome, Buyers!</h1>
-        <h2>Product List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Shop Name</th>
-                    <th>No</th>
-                    <th>Image</th>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $count = 1;
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
+<main>
+    <h1>Welcome, Buyers!</h1>
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Shop Name</th>
+                <th>No</th>
+                <th>Image</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $count = 1;
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
                                 <td>{$row['shop_name']}</td>
                                 <td>{$count}</td>
                                 <td><img src='{$row['product_photo']}' alt='Product Image'></td>
@@ -123,21 +106,21 @@ $result = $conn->query($sql);
                                     </form>
                                 </td>
                             </tr>";
-                        $count++;
-                    }
-                } else {
-                    echo "<tr><td colspan='9'>No products available</td></tr>";
+                    $count++;
                 }
-                ?>
-            </tbody>
-        </table>
+            } else {
+                echo "<tr><td colspan='9'>No products available</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 
-        <!-- Display the cart at the bottom -->
-        <?php
-        if (!empty($_SESSION['cart_items'])) {
-            echo "<h2>Your Cart</h2>";
-            echo "<table>";
-            echo "<thead>
+    <!-- Display the cart at the bottom -->
+    <?php
+    if (!empty($_SESSION['cart_items'])) {
+        echo "<h2>Your Cart</h2>";
+        echo "<table>";
+        echo "<thead>
                     <tr>
                         <th>No</th>
                         <th>Product ID</th>
@@ -148,19 +131,19 @@ $result = $conn->query($sql);
                         <th>Action</th>
                     </tr>
                   </thead>";
-            echo "<tbody>";
-            $count = 1;
-            foreach ($_SESSION['cart_items'] as $item) {
-                // Fetch product details from the database based on product ID
-                $sql = "SELECT product_name, product_photo, price FROM products WHERE product_id = ?";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("i", $item['product_id']);
-                $stmt->execute();
-                $result = $stmt->get_result();
+        echo "<tbody>";
+        $count = 1;
+        foreach ($_SESSION['cart_items'] as $item) {
+            // Fetch product details from the database based on product ID
+            $sql = "SELECT product_name, product_photo, price FROM products WHERE product_id = ?";
+            $stmt = $connection->prepare($sql);
+            $stmt->bind_param("i", $item['product_id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-                if ($result->num_rows > 0) {
-                    $product = $result->fetch_assoc();
-                    echo "<tr>
+            if ($result->num_rows > 0) {
+                $product = $result->fetch_assoc();
+                echo "<tr>
                             <td>{$count}</td>
                             <td>{$item['product_id']}</td>
                             <td><img src='{$product['product_photo']}' alt='Product Image' style='width: 50px; height: auto;'></td>
@@ -182,20 +165,28 @@ $result = $conn->query($sql);
                                 </form>
                             </td>
                           </tr>";
-                    $count++;
-                }
-                $stmt->close();
+                $count++;
             }
-            echo "</tbody></table>";
-        } else {
-            echo "<p>Your cart is empty.</p>";
+            $stmt->close();
         }
-        ?>
-    </main>
+        echo "</tbody></table>";
+    } else {
+        echo "<p>Your cart is empty.</p>";
+    }
+    ?>
+</main>
 </body>
+<script>
+    function confirmLogout() {
+        var confirmAction = confirm("Are you sure you want to log out?");
+        if (confirmAction) {
+            window.location.href = "logout.php";
+        }
+    }
+</script>
 
 </html>
 
 <?php
-$conn->close();
+$connection->close();
 ?>
