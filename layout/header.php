@@ -12,6 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $current_user_id = $_SESSION['user_id']; // Ensure you have the user_id from the session
 $role = $_SESSION['role'];
+
 //we'll get the user's personal info
 $sql_personal = "SELECT * FROM personal_info WHERE user_id = ?";
 $userInfo = "SELECT * FROM users WHERE user_id = ?";
@@ -63,6 +64,31 @@ $headerUrl = $url[4];
     <?php if ($headerUrl === 'seller_dashboard.php') : ?>
         <link rel="stylesheet" href="seller_dashboard.css">
     <?php endif; ?>
+    <?php if ($headerUrl === 'seller_profile.php'): ?>
+        <link rel="stylesheet" href="seller_profile.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'product_update.php'): ?>
+        <link rel="stylesheet" href="a_update.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'buyer_dashboard.php'): ?>
+        <link rel="stylesheet" href="buyer_dashboard.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'buy_now.php'): ?>
+        <link rel="stylesheet" href="buy_now.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'a_fertilizers.php'): ?>
+        <link rel="stylesheet" href="a_fertilizers.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'a_pest.php'): ?>
+        <link rel="stylesheet" href="a_pest_fertilizer.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'admin_profile.php'): ?>
+        <link rel="stylesheet" href="admin_profile.css">
+    <?php endif; ?>
+    <?php if ($headerUrl === 'a_farmers.php' || $headerUrl === 'a_buyers.php'): ?>
+        <link rel="stylesheet" href="a_table.css">
+    <?php endif; ?>
+
     <style>
         * {
             margin: 0;
@@ -237,9 +263,9 @@ $headerUrl = $url[4];
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 135px 50px;
             width: auto;
+            min-width: 500px;
             max-width: 1500px;
             border: 2px solid green;
-            text-align: center;
             overflow: auto;
         }
     </style>
@@ -303,7 +329,7 @@ $headerUrl = $url[4];
         <nav class="navigation">
             <?php if ($role == 'Farmer') : ?>
                 <a id="home" href="seller_dashboard.php">Home</a>
-            <?php elseif ($role === 'Admin'): ?>
+            <?php elseif ($role === 'Admin' || $role === 'admin'): ?>
                 <a id="home" href="admin_dashboard.php">Home</a>
             <?php else: ?>
                 <a id="home" href="buyer_dashboard.php">Home</a>
@@ -320,21 +346,35 @@ $headerUrl = $url[4];
                     </div>
                 </div>
             <?php endif; ?>
-            <?php if ($role == 'Farmer') : ?>
+            <?php if ($role == 'admin' || $role === 'admin') : ?>
                 <a id="fertilizers" href="a_fertilizers.php">Fertilizer</a>
                 <a id="pest" href="a_pest.php">Pest</a>
             <?php endif; ?>
             <?php if ($role == 'Buyer') : ?>
                 <a id="orders" href="track_order.php">My Orders</a>
             <?php endif; ?>
-
             <a id="message" name="message" href="message.php">
                 Messages
             </a>
-            <a href="admin_profile.php">
-                <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
-            </a>
-
+            <?php if ($role == 'Farmer') : ?>
+                <a href="seller_profile.php">
+                    <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
+                </a>
+            <?php elseif ($role == 'Buyer') : ?>
+                <a href="buyer_profile.php">
+                    <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
+                </a>
+            <?php else : ?>
+                <a href="admin_profile.php">
+                    <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
+                </a>
+            <?php endif; ?>
+            <?php if ($role == 'Farmer') : ?>
+                <!-- notification bell here for notifications -->
+                <a href="notification.php">
+                    <img src="bell.png" width="25" height="25" alt="Notification" title="Notification">
+                </a>
+            <?php endif; ?>
             <a href="#" onclick="confirmLogout()" class="logout-icon">
                 <img src="logout.png" style="width: 100%; height: 100%;" alt="Log Out" title="Log Out">
             </a>

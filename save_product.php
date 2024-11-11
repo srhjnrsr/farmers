@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id']; // Get the logged-in user's ID
-
+var_dump($_POST);
 // Database connection
 $conn = new mysqli('localhost', 'root', '', 'lagonoy_farmers');
 
@@ -72,4 +72,3 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
-?>
