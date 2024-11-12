@@ -1,5 +1,5 @@
 <?php
-require_once('config/constant.php');
+require_once('config/database.php');
 // Fetch all non-archived fertilizers from the database
 $sql = "SELECT * FROM fertilizers WHERE is_archived = 0"; // Updated query
 $result = $connection->query($sql);
@@ -20,7 +20,7 @@ $result = $connection->query($sql);
             } else if (role === 'Admin') {
                 window.location.href = 'admin_login.html';
             } else {
-                window.location.href = 'seller_login.html?role=' + role;
+                window.location.href = 'seller_login.php?role=' + role;
             }
         }
     </script>
