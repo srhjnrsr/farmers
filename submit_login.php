@@ -1,24 +1,11 @@
 <?php
-session_start();
-
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "lagonoy_farmers";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once('config/constants.php');
 
 // Sanitize input data to prevent SQL injection
 function sanitize_input($data)
 {
-    global $conn;
-    return mysqli_real_escape_string($conn, trim($data));
+    global $connection;
+    return mysqli_real_escape_string($connection, trim($data));
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Retrieve the stored hash and role for the user
     $sql = "SELECT user_id, password, role FROM users WHERE username = '$username'";
-    $result = $conn->query($sql);
+    $result = $connection->query($sql);
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -58,4 +45,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$conn->close();
+$connection->close();
