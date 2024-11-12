@@ -1,5 +1,5 @@
 <?php
-require_once('config/constant.php');
+require_once('config/database.php');
 // Fetch all fertilizers from the database
 $sql = "SELECT * FROM pest WHERE is_archived = 0";
 $result = $connection->query($sql);
