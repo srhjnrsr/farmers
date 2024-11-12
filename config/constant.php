@@ -18,12 +18,12 @@ if (!defined('DB_HOST')) {
     define('DB_HOST', 'localhost');
 }
 
-if (!defined('DB_USER')) {
-    define('DB_USER', 'root');
+if (!defined('u412427249_farmers')) {
+    define('u412427249_farmers', 'root');
 }
 
-if (!defined('DB_PASS')) {
-    define('DB_PASS', '');
+if (!defined('u412427249_Root_root011200')) {
+    define('u412427249_Root_root011200', '');
 }
 
 if (!defined('DB_NAME')) {
