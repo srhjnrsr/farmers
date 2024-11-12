@@ -15,17 +15,21 @@ if (!defined('ROOT_URL')) {
 }
 
 if (!defined('DB_HOST')) {
-    define('DB_HOST', 'localhost');
+    define('DB_HOST', 'https://palegoldenrod-elk-953378.hostingersite.com/');
 }
+//local: localhost
 
 if (!defined('DB_NAME')) {
     define('DB_NAME', 'u412427249_farmers');
 }
+//local: root
 
 if (!defined('DB_PASS')) {
     define('DB_PASS', 'u412427249_Root_root011200');
 }
-
+//local: ''
 if (!defined('DB_NAME')) {
     define('DB_NAME', 'u412427249_lagonoy_farmers');
 }
+
+//local: 'lagonoy_farmers'
