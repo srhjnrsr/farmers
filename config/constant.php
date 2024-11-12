@@ -19,8 +19,8 @@ if (!defined('DB_HOST')) {
 }
 //local: localhost
 
-if (!defined('DB_NAME')) {
-    define('DB_NAME', 'u412427249_farmers');
+if (!defined('DB_USER')) {
+    define('DB_USER', 'u412427249_farmers');
 }
 //local: root
 

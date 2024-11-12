@@ -1,17 +1,15 @@
 <?php
-require_once('config/constant.php');
+require('config/database.php');
 
-// Sanitize input data to prevent SQL injection
-function sanitize_input($data)
+function sanitize_input($data, $connection)
 {
-    global $connection;
     return mysqli_real_escape_string($connection, trim($data));
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = sanitize_input($_POST["username"]);
-    $password = sanitize_input($_POST["password"]);
-    $submitted_role = sanitize_input($_POST["role"]); // Get role from form
+    $username = sanitize_input($_POST["username"], $connection);
+    $password = sanitize_input($_POST["password"], $connection);
+    $submitted_role = sanitize_input($_POST["role"], $connection); // Get role from form
 
     // Retrieve the stored hash and role for the user
     $sql = "SELECT user_id, password, role FROM users WHERE username = '$username'";
