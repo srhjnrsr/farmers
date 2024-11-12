@@ -4,9 +4,7 @@ $sql = "SELECT * FROM fertilizers";
 $result = $connection->query($sql);
 ?>
 <main>
-    <button onclick="window.location.href='a_add_fertilizers.html'" style="position: absolute; top: 85px; left: 20px; background-color: lightcoral;">
-        Add New Record
-    </button>
+
     <h2>Fertilizers Data</h2>
     <div class="pest_fertilizer-list">
         <?php
@@ -62,6 +60,9 @@ $result = $connection->query($sql);
             echo "<p>No fertilizers found.</p>";
         }
         ?>
+        <button onclick="window.location.href='a_add_fertilizers.html'" style="position: absolute; top: 150px; left: 20px; background-color: lightcoral;">
+            Add New Record
+        </button>
     </div>
 </main>
 </body>
