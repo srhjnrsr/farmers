@@ -18,14 +18,14 @@ if (!defined('DB_HOST')) {
     define('DB_HOST', 'localhost');
 }
 
-if (!defined('u412427249_farmers')) {
-    define('u412427249_farmers', 'root');
+if (!defined('DB_NAME')) {
+    define('DB_NAME', 'u412427249_farmers');
 }
 
-if (!defined('u412427249_Root_root011200')) {
-    define('u412427249_Root_root011200', '');
+if (!defined('DB_PASS')) {
+    define('DB_PASS', 'u412427249_Root_root011200');
 }
 
 if (!defined('DB_NAME')) {
-    define('DB_NAME', 'lagonoy_farmers');
+    define('DB_NAME', 'u412427249_lagonoy_farmers');
 }
