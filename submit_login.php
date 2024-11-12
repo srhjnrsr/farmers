@@ -1,5 +1,5 @@
 <?php
-require_once('config/constants.php');
+require_once('config/constant.php');
 
 // Sanitize input data to prevent SQL injection
 function sanitize_input($data)
