@@ -1,24 +1,13 @@
 <?php
-// Connect to the database
-$host = 'localhost';
-$dbname = 'lagonoy_farmers';
-$username = 'root';
-$password = '';
-
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+require_once('config/constant.php');
 // Fetch all non-archived fertilizers from the database
 $sql = "SELECT * FROM fertilizers WHERE is_archived = 0"; // Updated query
-$result = $conn->query($sql);
+$result = $connection->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,6 +25,7 @@ $result = $conn->query($sql);
         }
     </script>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -67,7 +57,7 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 // Output data for each row
                 while ($row = $result->fetch_assoc()) {
-                    ?>
+            ?>
                     <div class="fertilizer-item">
                         <div class="fertilizer-content">
                             <img src="<?php echo $row['image']; ?>" alt="Fertilizer Image">
@@ -79,7 +69,7 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <hr>
-                    <?php
+            <?php
                 }
             } else {
                 echo "<p>No fertilizers found.</p>";
@@ -88,4 +78,5 @@ $result = $conn->query($sql);
         </div>
     </main>
 </body>
+
 </html>
