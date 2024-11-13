@@ -15,12 +15,12 @@ if (!defined('ROOT_URL')) {
 }
 
 if (!defined('DB_HOST')) {
-    define('DB_HOST', 'https://palegoldenrod-elk-953378.hostingersite.com/');
+    define('DB_HOST', 'darkseagreen-ferret-481655.hostingersite.com');
 }
 //local: localhost
 
 if (!defined('DB_USER')) {
-    define('DB_USER', 'u412427249_farmers');
+    define('DB_USER', 'u186919644_farmers');
 }
 //local: root
 
@@ -29,7 +29,7 @@ if (!defined('DB_PASS')) {
 }
 //local: ''
 if (!defined('DB_NAME')) {
-    define('DB_NAME', 'u412427249_lagonoy_farmers');
+    define('DB_NAME', 'u186919644_lagonoy_farmer');
 }
 
 //local: 'lagonoy_farmers'
