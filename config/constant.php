@@ -15,7 +15,7 @@ if (!defined('ROOT_URL')) {
 }
 
 if (!defined('DB_HOST')) {
-    define('DB_HOST', '82.197.82.107');
+    define('DB_HOST', 'srv1716.hstgr.io');
 }
 //local: localhost
 
@@ -25,7 +25,7 @@ if (!defined('DB_USER')) {
 //local: root
 
 if (!defined('DB_PASS')) {
-    define('DB_PASS', 'fF4?n7:6Uj');
+    define('DB_PASS', '5S#K;N$uJ');
 }
 //local: ''
 if (!defined('DB_NAME')) {
