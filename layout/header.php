@@ -49,7 +49,69 @@ if ($result_personal || $result_user) {
 // we have defined it on the top of all the files so that we dont need to define it repeatedly
 $headerUrl = $url[4];
 
+$urls = [
+    [
+        'url' => 'seller_dashboard.php',
+        'style' => '<link rel="stylesheet" href="seller_dashboard.css">'
+    ],
+    [
+        'url' => 'buyer_dashboard.php',
+        'style' => '<link rel="stylesheet" href="buyer_dashboard.css">'
+    ],
+    [
+        'url' => 'admin_dashboard.php',
+        'style' => '<link rel="stylesheet" href="admin_dashboard.css">'
+    ],
+    [
+        'url' => 'seller_profile.php',
+        'style' => '<link rel="stylesheet" href="seller_profile.css">'
+    ],
+    [
+        'url' => 'buyer_profile.php',
+        'style' => '<link rel="stylesheet" href="buyer_profile.css">'
+    ],
+    [
+        'url' => 'admin_profile.php',
+        'style' => '<link rel="stylesheet" href="admin_profile.css">'
+    ],
+    [
+        'url' => 'product_update.php',
+        'style' => '<link rel="stylesheet" href="a_update.css">'
+    ],
+    [
+        'url' => 'buy_now.php',
+        'style' => '<link rel="stylesheet" href="buy_now.css">'
+    ],
+    [
+        'url' => 'a_fertilizers.php',
+        'style' => '<link rel="stylesheet" href="a_fertilizers.css">'
+    ],
+    [
+        'url' => 'a_pest.php',
+        'style' => '<link rel="stylesheet" href="a_pest_fertilizer.css">'
+    ],
+    [
+        'url' => 'admin_profile.php',
+        'style' => '<link rel="stylesheet" href="admin_profile.css">'
+    ],
+    [
+        'url' => 'a_farmers.php',
+        'style' => '<link rel="stylesheet" href="a_table.css">'
+    ],
+    [
+        'url' => 'a_buyers.php',
+        'style' => '<link rel="stylesheet" href="a_table.css">'
+    ],
+    [
+        'url' => 'fertilizer.php',
+        'style' => '<link rel="stylesheet" href="fertilizer.css">'
+    ],
+    [
+        'url' => 'pest.php',
+        'style' => '<link rel="stylesheet" href="pest.css">'
+    ]
 
+];
 
 ?>
 
@@ -61,33 +123,15 @@ $headerUrl = $url[4];
     <link rel="stylesheet" href="<?= ROOT_URL ?>css\style5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <?php if ($headerUrl === 'seller_dashboard.php') : ?>
-        <link rel="stylesheet" href="seller_dashboard.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'seller_profile.php'): ?>
-        <link rel="stylesheet" href="seller_profile.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'product_update.php'): ?>
-        <link rel="stylesheet" href="a_update.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'buyer_dashboard.php'): ?>
-        <link rel="stylesheet" href="buyer_dashboard.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'buy_now.php'): ?>
-        <link rel="stylesheet" href="buy_now.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'a_fertilizers.php'): ?>
-        <link rel="stylesheet" href="a_fertilizers.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'a_pest.php'): ?>
-        <link rel="stylesheet" href="a_pest_fertilizer.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'admin_profile.php'): ?>
-        <link rel="stylesheet" href="admin_profile.css">
-    <?php endif; ?>
-    <?php if ($headerUrl === 'a_farmers.php' || $headerUrl === 'a_buyers.php'): ?>
-        <link rel="stylesheet" href="a_table.css">
-    <?php endif; ?>
+    <?php
+    foreach ($urls as $url) {
+        if ($url['url'] === $headerUrl) {
+            echo $url['style'];
+            break;
+        }
+    }
+
+    ?>
 
     <style>
         * {
