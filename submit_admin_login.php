@@ -1,5 +1,5 @@
 <?php
-require_once 'config/database.php';
+require('config/database.php');
 
 // Sanitize input data to prevent SQL injection
 function sanitize_input($data, $connection)
@@ -8,8 +8,8 @@ function sanitize_input($data, $connection)
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = sanitize_input($_POST["username"]);
-    $password = sanitize_input($_POST["password"]);
+    $username = sanitize_input($_POST["username"], $connection);
+    $password = sanitize_input($_POST["password"], $connection);
 
     // Check if the admin account exists with a fixed username
     $sql = "SELECT user_id, password FROM admin WHERE username = 'Admin'";
