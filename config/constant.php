@@ -15,7 +15,7 @@ if (!defined('ROOT_URL')) {
 }
 
 if (!defined('DB_HOST')) {
-    define('DB_HOST', 'darkseagreen-ferret-481655.hostingersite.com');
+    define('DB_HOST', '82.197.82.107');
 }
 //local: localhost
 
@@ -25,7 +25,7 @@ if (!defined('DB_USER')) {
 //local: root
 
 if (!defined('DB_PASS')) {
-    define('DB_PASS', 'u412427249_Root_root011200');
+    define('DB_PASS', 'fF4?n7:6Uj');
 }
 //local: ''
 if (!defined('DB_NAME')) {
