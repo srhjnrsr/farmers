@@ -15,21 +15,25 @@ if (!defined('ROOT_URL')) {
 }
 
 if (!defined('DB_HOST')) {
-    define('DB_HOST', 'srv1716.hstgr.io');
+    define('DB_HOST', 'localhost');
 }
+//prod: 'srv1716.hstgr.io'
 //local: localhost
 
 if (!defined('DB_USER')) {
-    define('DB_USER', 'u186919644_farmers');
+    define('DB_USER', 'root');
 }
+//prod: 'u186919644_farmers'
 //local: root
 
 if (!defined('DB_PASS')) {
-    define('DB_PASS', '5S#K;N$uJ');
+    define('DB_PASS', '');
 }
+//prod: '5S#K;N$uJ'
 //local: ''
-if (!defined('DB_NAME')) {
-    define('DB_NAME', 'u186919644_lagonoy_farmer');
-}
 
+if (!defined('DB_NAME')) {
+    define('DB_NAME', 'lagonoy_farmers');
+}
+//prod: 'u186919644_lagonoy_farmer'
 //local: 'lagonoy_farmers'
