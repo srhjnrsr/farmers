@@ -2,16 +2,23 @@
 
 require 'config/database.php';
 
+//we will get the current url
+// the $url array is from the config/constant.php
+// we have defined it on the top of all the files so that we dont need to define it repeatedly
+$headerUrl = $url[4];
 
 // Redirect to login page if not logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: seller_login.php");
-    exit();
+if ($headerUrl === 'fertilizer.php' || $headerUrl === 'pest.php') {
+} else {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: seller_login.php");
+        exit();
+    }
+    $current_user_id = $_SESSION['user_id']; // Ensure you have the user_id from the session
+    $role = $_SESSION['role'];
 }
 
 
-$current_user_id = $_SESSION['user_id']; // Ensure you have the user_id from the session
-$role = $_SESSION['role'];
 
 //we'll get the user's personal info
 $sql_personal = "SELECT * FROM personal_info WHERE user_id = ?";
@@ -44,10 +51,7 @@ if ($result_personal || $result_user) {
     exit();
 }
 
-//we will get the current url
-// the $url array is from the config/constant.php
-// we have defined it on the top of all the files so that we dont need to define it repeatedly
-$headerUrl = $url[4];
+
 
 $urls = [
     [
@@ -337,6 +341,16 @@ $urls = [
             }
         }
 
+        function goToLoginPage(role) {
+            if (role === 'Buyer') {
+                window.location.href = 'buyer_login.html';
+            } else if (role === 'Admin') {
+                window.location.href = 'admin_login.html';
+            } else {
+                window.location.href = 'seller_login.php?role=' + role;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             let $headerUrl = '<?= $headerUrl ?>';
             console.log($headerUrl);
@@ -371,56 +385,73 @@ $urls = [
             </div>
         </div>
         <nav class="navigation">
-            <?php if ($role == 'Farmer') : ?>
-                <a id="home" href="seller_dashboard.php">Home</a>
-            <?php elseif ($role === 'Admin' || $role === 'admin'): ?>
-                <a id="home" href="admin_dashboard.php">Home</a>
+
+            <?php if (isset($role)) : ?>
+                <?php if (isset($role) && $role == 'Farmer') : ?>
+                    <a id="home" href="seller_dashboard.php">Home</a>
+                <?php elseif ($role === 'Admin' || $role === 'admin'): ?>
+                    <a id="home" href="admin_dashboard.php">Home</a>
+                <?php else: ?>
+                    <a id="home" href="buyer_dashboard.php">Home</a>
+                <?php endif; ?>
+                <!-- you can make this reference when doing the dynamic links for headers -->
+
+                <?php if ($role == 'admin'): ?>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            Users
+                        </button>
+                        <div class="dropdown-content">
+                            <a id="farmers" href="#" onclick="goToLoginPage('Farmer')">Farmer</a>
+                            <a id="buyers" href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($role == 'admin' || $role === 'admin') : ?>
+                    <a id="fertilizers" href="a_fertilizers.php">Fertilizer</a>
+                    <a id="pest" href="a_pest.php">Pest</a>
+                <?php endif; ?>
+                <?php if ($role == 'Buyer') : ?>
+                    <a id="orders" href="track_order.php">My Orders</a>
+                <?php endif; ?>
+                <a id="message" name="message" href="message.php">
+                    Messages
+                </a>
+                <?php if ($role == 'Farmer') : ?>
+                    <a href="seller_profile.php">
+                        <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
+                    </a>
+                <?php elseif ($role == 'Buyer') : ?>
+                    <a href="buyer_profile.php">
+                        <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
+                    </a>
+                <?php else : ?>
+                    <a href="admin_profile.php">
+                        <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
+                    </a>
+                <?php endif; ?>
+                <?php if ($role == 'Farmer') : ?>
+                    <!-- notification bell here for notifications -->
+                    <a href="notification.php">
+                        <img src="bell.png" width="25" height="25" alt="Notification" title="Notification">
+                    </a>
+                <?php endif; ?>
+                <a href="#" onclick="confirmLogout()" class="logout-icon">
+                    <img src="logout.png" style="width: 100%; height: 100%;" alt="Log Out" title="Log Out">
+                </a>
             <?php else: ?>
-                <a id="home" href="buyer_dashboard.php">Home</a>
-            <?php endif; ?>
-            <!-- you can make this reference when doing the dynamic links for headers -->
-            <?php if ($role == 'admin'): ?>
+                <a href="home.html" class="active">Home</a>
+                <a href="fertilizer.php">Fertilizer</a>
+                <a href="pest.php">Pest</a>
                 <div class="dropdown">
                     <button class="dropbtn">
-                        Users
-                    </button>
+                        <img src="shopping.png" alt="Icon">Farmers & Buyers Hub</button>
                     <div class="dropdown-content">
-                        <a id="farmers" href="#" onclick="goToLoginPage('Farmer')">Farmer</a>
-                        <a id="buyers" href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
+                        <a href="#" onclick="goToLoginPage('Seller')">Farmer</a>
+                        <a href="#" onclick="goToLoginPage('Buyer')">Buyer</a>
                     </div>
                 </div>
+                <a href="#" onclick="goToLoginPage('Admin')">Municipal Agriculturist</a>
             <?php endif; ?>
-            <?php if ($role == 'admin' || $role === 'admin') : ?>
-                <a id="fertilizers" href="a_fertilizers.php">Fertilizer</a>
-                <a id="pest" href="a_pest.php">Pest</a>
-            <?php endif; ?>
-            <?php if ($role == 'Buyer') : ?>
-                <a id="orders" href="track_order.php">My Orders</a>
-            <?php endif; ?>
-            <a id="message" name="message" href="message.php">
-                Messages
-            </a>
-            <?php if ($role == 'Farmer') : ?>
-                <a href="seller_profile.php">
-                    <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
-                </a>
-            <?php elseif ($role == 'Buyer') : ?>
-                <a href="buyer_profile.php">
-                    <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
-                </a>
-            <?php else : ?>
-                <a href="admin_profile.php">
-                    <img src="profile-account.png" style="width: 100%; height: 100%;" alt="Profile" title="Profile">
-                </a>
-            <?php endif; ?>
-            <?php if ($role == 'Farmer') : ?>
-                <!-- notification bell here for notifications -->
-                <a href="notification.php">
-                    <img src="bell.png" width="25" height="25" alt="Notification" title="Notification">
-                </a>
-            <?php endif; ?>
-            <a href="#" onclick="confirmLogout()" class="logout-icon">
-                <img src="logout.png" style="width: 100%; height: 100%;" alt="Log Out" title="Log Out">
-            </a>
         </nav>
     </header>
