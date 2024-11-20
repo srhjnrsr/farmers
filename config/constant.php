@@ -21,7 +21,7 @@ if (!defined('DB_HOST')) {
 //local: localhost
 
 if (!defined('DB_USER')) {
-    define('DB_USER', 'ru186919644_farmersoot');
+    define('DB_USER', 'u186919644_farmers');
 }
 //prod: 'u186919644_farmers'
 //local: root
