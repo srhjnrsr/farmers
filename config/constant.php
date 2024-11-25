@@ -15,21 +15,25 @@ if (!defined('ROOT_URL')) {
 }
 
 if (!defined('DB_HOST')) {
-    define('DB_HOST', 'https://palegoldenrod-elk-953378.hostingersite.com/');
+    // define('DB_HOST', 'https://palegoldenrod-elk-953378.hostingersite.com/');
+    define('DB_HOST', 'localhost');
 }
 //local: localhost
 
 if (!defined('DB_USER')) {
-    define('DB_USER', 'u412427249_farmers');
+    // define('DB_USER', 'u412427249_farmers');
+    define('DB_USER', 'root');
 }
 //local: root
 
 if (!defined('DB_PASS')) {
-    define('DB_PASS', 'u412427249_Root_root011200');
+    // define('DB_PASS', 'u412427249_Root_root011200');
+    define('DB_PASS', '');
 }
 //local: ''
 if (!defined('DB_NAME')) {
-    define('DB_NAME', 'u412427249_lagonoy_farmers');
+    // define('DB_NAME', 'u412427249_lagonoy_farmers');
+    define('DB_NAME', 'lagonoy_farmers');
 }
 
 //local: 'lagonoy_farmers'

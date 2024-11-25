@@ -24,7 +24,7 @@ require 'layout/header.php';
 
     // Check if there are any rows returned
     if ($result->num_rows > 0) {
-        echo "<table>
+        echo '<table border="1">
                     <tr>
                         <th>Role</th>
                         <th>User ID</th>
@@ -41,7 +41,7 @@ require 'layout/header.php';
                         <th>Address (Municipality)</th>
                         <th>Address (Province)</th>
                         <th>Mobile No.</th>
-                    </tr>";
+                    </tr>';
         // Fetch each row and display it
         while ($row = $result->fetch_assoc()) {
             echo "<tr>

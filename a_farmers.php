@@ -33,7 +33,7 @@ require 'layout/header.php';
 
     // Check if there are any rows returned
     if ($result->num_rows > 0) {
-        echo "<table>
+        echo '<table border="1">
                     <tr>
                         <th>Role</th>
                         <th>User ID</th>
@@ -59,7 +59,7 @@ require 'layout/header.php';
                         <th>Total Production</th>
                         <th>Tenurial Status</th>
                         <th>Soil Type</th>
-                    </tr>";
+                    </tr>';
         // Fetch each row and display it
         while ($row = $result->fetch_assoc()) {
             echo "<tr>

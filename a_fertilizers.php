@@ -5,7 +5,7 @@ $result = $connection->query($sql);
 ?>
 <main>
 
-    <h2>Fertilizers Data</h2>
+    <h2 style="margin: 15px 0;">Fertilizers Data</h2>
     <div class="pest_fertilizer-list">
         <?php
         if ($result->num_rows > 0) {
@@ -60,11 +60,29 @@ $result = $connection->query($sql);
             echo "<p>No fertilizers found.</p>";
         }
         ?>
-        <button onclick="window.location.href='a_add_fertilizers.html'" style="position: absolute; top: 150px; left: 20px; background-color: lightcoral;">
+        <button class="btn-record" onclick="window.location.href='a_add_fertilizers.html'" style="position: absolute; top: 150px; left: 70px; background-color: lightcoral; padding: 10px; border-radius: 5px;">
             Add New Record
         </button>
     </div>
 </main>
 </body>
-
+<style>
+    .update-btn,
+    .unarchive-btn,
+    .archive-btn{
+        background: #60e758;
+        border-radius: 5px;
+        padding: 2px;
+        margin-top: 5px;
+        border-style: none;
+        outline: 1px solid #858585;
+        color: #1f1f20;
+    }
+    .update-btn{
+        background: #5868e7;}
+    .unarchive-btn{
+        background: #dd2929;}
+    .archive-btn{
+        background: #60e758;}
+</style>
 </html>

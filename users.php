@@ -20,5 +20,20 @@ require 'layout/header.php';
 <script src="javascript/users.js"></script>
 
 </body>
-
+<style>
+    .wrapper{
+        width: 100%;
+        height: 500px;
+        /* position: absolute; */
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 7%;
+    }
+    .users{
+        border: 2px solid green;
+        padding: 30px;
+        border-radius: 20px;
+    }
+</style>
 </html>

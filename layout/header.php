@@ -3,6 +3,7 @@
 require 'config/database.php';
 
 
+
 // Redirect to login page if not logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: seller_login.php");
@@ -47,7 +48,16 @@ if ($result_personal || $result_user) {
 //we will get the current url
 // the $url array is from the config/constant.php
 // we have defined it on the top of all the files so that we dont need to define it repeatedly
-$headerUrl = $url[4];
+
+// $headerUrl = $url[4];
+
+//this will check the array before accessing indexes
+if (isset($url[4])) {
+    $headerUrl = $url[4];
+} else {
+    $headerUrl = 'default-value';
+}
+
 
 
 

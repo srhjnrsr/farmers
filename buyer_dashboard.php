@@ -19,7 +19,7 @@ $stmt->close();
 $sql = "SELECT products.*, farm_info.shop_name FROM products JOIN farm_info ON products.user_id = farm_info.user_id";
 $result = $connection->query($sql);
 ?>
-<!-- 
+
 
 
 <!DOCTYPE html>
@@ -52,7 +52,7 @@ $result = $connection->query($sql);
                 <img src="logout.png" alt="Log Out" title="Log Out">
             </a>
         </nav>
-    </header> -->
+    </header>
 
 <main>
     <h1>Welcome, Buyers!</h1>
