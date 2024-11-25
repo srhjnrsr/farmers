@@ -1,33 +1,25 @@
 <?php
-session_start();
-
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "lagonoy_farmers";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require('config/database.php');
 
 // Sanitize input data to prevent SQL injection
-function sanitize_input($data)
+function sanitize_input($data, $connection)
 {
-    global $conn;
-    return mysqli_real_escape_string($conn, trim($data));
+    return mysqli_real_escape_string($connection, trim($data));
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = sanitize_input($_POST["username"]);
-    $password = sanitize_input($_POST["password"]);
+    $username = sanitize_input($_POST["username"], $connection);
+    $password = sanitize_input($_POST["password"], $connection);
 
     // Check if the admin account exists with a fixed username
     $sql = "SELECT user_id, password FROM admin WHERE username = 'Admin'";
-    $result = $conn->query($sql);
+    $result = $connection->query($sql);
+
+    //add error cather if the query fails
+    if (!$result) {
+        echo "Error: " . $connection->error;
+        exit();
+    }
 
     // Predefined default password for first-time admin creation
     $default_password = 'admin246';
@@ -40,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Insert the admin account with the default password
             $create_sql = "INSERT INTO admin (username, password) VALUES ('Admin', '$hashed_password')";
-            if ($conn->query($create_sql) === TRUE) {
+            if ($connection->query($create_sql) === TRUE) {
                 // Display success message and use JavaScript to redirect after 3 seconds
                 echo "<p>Admin account created successfully. Redirecting to dashboard...</p>";
                 echo "<script>
@@ -50,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       </script>";
                 exit();
             } else {
-                echo "Error creating admin account: " . $conn->error;
+                echo "Error creating admin account: " . $connection->error;
                 exit(); // Stop execution if admin account creation fails
             }
         } else {
@@ -82,4 +74,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$conn->close();
+$connection->close();
