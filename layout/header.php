@@ -52,7 +52,7 @@ if ($result_personal || $result_user) {
     exit();
 }
 
-<<<<<<< HEAD
+
 //we will get the current url
 // the $url array is from the config/constant.php
 // we have defined it on the top of all the files so that we dont need to define it repeatedly
@@ -66,8 +66,6 @@ if (isset($url[4])) {
     $headerUrl = 'default-value';
 }
 
-=======
->>>>>>> 26e9328ebc793adfcc7368bed64895efa34b74a3
 
 
 $urls = [
